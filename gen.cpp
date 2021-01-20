@@ -4,7 +4,6 @@ typedef long long ll;
 typedef pair<int, int> ii;
 typedef vector<int> vi;
 typedef vector<ii> vii;
-template <class T> int size(const T &x) { return x.size(); }
 const int INF = 2147483647;
 #define rep(i,a,b) for (__typeof(a) i=(a); i<(b); ++i)
 #define iter(it,c) for (__typeof((c).begin()) it = (c).begin(); it != (c).end(); ++it)
@@ -50,7 +49,7 @@ int main() {
                     ss << x;
                     string cur = ss.str();
                     int v = 0;
-                    for (int i = 0; i < size(cur); i++) {
+                    for (int i = 0; i < cur.size(); i++) {
                         v += (cur[i] - '0') * ((7-i%6)%6 + 2);
                     }
                     v = (11 - v % 11) % 11;
