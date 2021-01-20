@@ -5,6 +5,13 @@ import sys
 from kennitala import *
 from urllib.request import urlretrieve
 
+def is_valid(kt):
+    if int(kt[6:8]) < 20:
+        # The two-digit random number is issued starting from 20. The kennitala
+        # package assumes it can start from 0.
+        return False
+    return Kennitala.is_valid(kt) and Kennitala.is_personal(kt)
+
 path = 'kennitala.txt'
 if not os.path.isfile(path):
     print('Næ í regex...')
@@ -17,10 +24,10 @@ print('Þýði regex...')
 rx = re.compile('^(%s)$' % rx)
 
 def check(kt):
+    val = is_valid(kt)
     a = rx.match(kt) is not None
-    b = Kennitala.is_valid(kt) and Kennitala.is_personal(kt)
-    print(kt, a, b)
-    assert a == b
+    print(kt, val, a)
+    assert val == a
 
 for i in range(100):
     check(Kennitala.random())
