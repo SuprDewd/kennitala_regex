@@ -12,11 +12,7 @@ def is_valid(kt):
         return False
     return Kennitala.is_valid(kt) and Kennitala.is_personal(kt)
 
-path = 'kennitala.txt'
-if not os.path.isfile(path):
-    print('Næ í regex...')
-    urlretrieve('https://x.algo.is/eats', path)
-with open(path, 'r') as f:
+with open('../regex.txt', 'r') as f:
     print('Les regex...')
     rx = f.read().strip()
 
